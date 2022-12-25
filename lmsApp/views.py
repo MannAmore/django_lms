@@ -57,6 +57,7 @@ def update_profile(request):
     context = context_data(request)
     context['page_title'] = 'Update Profile'
     user = User.objects.get(id = request.user.id)
+    template_name = 'manage_profile.html'
     if not request.method == 'POST':
         form = forms.UpdateProfile(instance=user)
         context['form'] = form
@@ -70,12 +71,13 @@ def update_profile(request):
         else:
             context['form'] = form
             
-    return render(request, 'manage_profile.html',context)
+    return render(request, template_name,context)
 
 @login_required
 def update_password(request):
     context =context_data(request)
     context['page_title'] = "Perbaharui Password"
+    template_name = 'update_password.html'
     if request.method == 'POST':
         form = forms.UpdatePasswords(user = request.user, data= request.POST)
         if form.is_valid():
@@ -88,7 +90,7 @@ def update_password(request):
     else:
         form = forms.UpdatePasswords(request.POST)
         context['form'] = form
-    return render(request,'update_password.html',context)
+    return render(request, template_name,context)
 
 # Create your views here.
 def login_page(request):
@@ -97,7 +99,8 @@ def login_page(request):
     context['footer'] = False
     context['page_name'] = 'login'
     context['page_title'] = 'Login'
-    return render(request, 'login.html', context)
+    template_name = 'login.html'
+    return render(request, template_name, context)
 
 def login_user(request):
     logout(request)
