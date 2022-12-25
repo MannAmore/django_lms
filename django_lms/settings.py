@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-j7xv%)66l8u0^8sxnj7()z$zll8&a2*_h2r84yeo9f2fidx8^7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['djangolms-production.up.railway.app','mandra9.pythonanywhere.com', 'localhost', '127.0.0.1']
 
