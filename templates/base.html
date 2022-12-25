@@ -71,7 +71,7 @@
   </head>
 
   <body class="">
-    {% include 'TopNavigation.html' %}
+    {% if topbar %} {% block TopNavigation %} {% include "TopNavigation.html" %} {% endblock TopNavigation %} {% endif %}
     <main class="py-5 mt-4">
       <div class="container mb-3">
         {% if messages %}
