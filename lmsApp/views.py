@@ -52,7 +52,7 @@ def save_register(request):
             
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def update_profile(request):
     context = context_data(request)
     context['page_title'] = 'Update Profile'
@@ -72,7 +72,7 @@ def update_profile(request):
             
     return render(request, 'manage_profile.html',context)
 
-@login_required
+
 def update_password(request):
     context =context_data(request)
     context['page_title'] = "Perbaharui Password"
@@ -119,7 +119,7 @@ def login_user(request):
             resp['msg'] = "Username atau kata sandi salah"
     return HttpResponse(json.dumps(resp),content_type='application/json')
 
-@login_required
+
 def home(request):
     context = context_data(request)
     context['page'] = 'home'
@@ -138,14 +138,14 @@ def logout_user(request):
     logout(request)
     return redirect('login-page')
     
-@login_required
+
 def profile(request):
     context = context_data(request)
     context['page'] = 'profile'
     context['page_title'] = "Profil"
     return render(request,'profile.html', context)
 
-@login_required
+
 def users(request):
     context = context_data(request)
     context['page'] = 'users'
@@ -153,7 +153,7 @@ def users(request):
     context['users'] = User.objects.exclude(pk=request.user.pk).filter(is_superuser = False).all()
     return render(request, 'users.html', context)
 
-@login_required
+
 def save_user(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -182,7 +182,7 @@ def save_user(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def manage_user(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_user'
@@ -194,7 +194,7 @@ def manage_user(request, pk = None):
     
     return render(request, 'manage_user.html', context)
 
-@login_required
+
 def delete_user(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:
@@ -209,7 +209,7 @@ def delete_user(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def category(request):
     context = context_data(request)
     context['page'] = 'category'
@@ -217,7 +217,7 @@ def category(request):
     context['category'] = models.Category.objects.filter(delete_flag = 0).all()
     return render(request, 'category.html', context)
 
-@login_required
+
 def save_category(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -246,7 +246,7 @@ def save_category(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def view_category(request, pk = None):
     context = context_data(request)
     context['page'] = 'view_category'
@@ -258,7 +258,7 @@ def view_category(request, pk = None):
     
     return render(request, 'view_category.html', context)
 
-@login_required
+
 def manage_category(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_category'
@@ -270,7 +270,7 @@ def manage_category(request, pk = None):
     
     return render(request, 'manage_category.html', context)
 
-@login_required
+
 def delete_category(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:
@@ -285,7 +285,7 @@ def delete_category(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def sub_category(request):
     context = context_data(request)
     context['page'] = 'sub_category'
@@ -293,7 +293,7 @@ def sub_category(request):
     context['sub_category'] = models.SubCategory.objects.filter(delete_flag = 0).all()
     return render(request, 'sub_category.html', context)
 
-@login_required
+
 def save_sub_category(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -322,7 +322,7 @@ def save_sub_category(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def view_sub_category(request, pk = None):
     context = context_data(request)
     context['page'] = "'view_sub_category'"
@@ -334,7 +334,7 @@ def view_sub_category(request, pk = None):
     
     return render(request, 'view_sub_category.html', context)
 
-@login_required
+
 def manage_sub_category(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_sub_category'
@@ -346,7 +346,7 @@ def manage_sub_category(request, pk = None):
     context['categories'] = models.Category.objects.filter(delete_flag = 0, status = 1).all()
     return render(request, 'manage_sub_category.html', context)
 
-@login_required
+
 def delete_sub_category(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:
@@ -361,7 +361,7 @@ def delete_sub_category(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def books(request):
     context = context_data(request)
     context['page'] = 'book'
@@ -369,7 +369,7 @@ def books(request):
     context['books'] = models.Books.objects.filter(delete_flag = 0).all()
     return render(request, 'books.html', context)
 
-@login_required
+
 def save_book(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -398,7 +398,7 @@ def save_book(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def view_book(request, pk = None):
     context = context_data(request)
     context['page'] = 'view_book'
@@ -410,7 +410,7 @@ def view_book(request, pk = None):
     
     return render(request, 'view_book.html', context)
 
-@login_required
+
 def manage_book(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_book'
@@ -422,7 +422,7 @@ def manage_book(request, pk = None):
     context['sub_categories'] = models.SubCategory.objects.filter(delete_flag = 0, status = 1).all()
     return render(request, 'manage_book.html', context)
 
-@login_required
+
 def delete_book(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:
@@ -437,7 +437,7 @@ def delete_book(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def students(request):
     context = context_data(request)
     context['page'] = 'student'
@@ -445,7 +445,7 @@ def students(request):
     context['students'] = models.Students.objects.filter(delete_flag = 0).all()
     return render(request, 'students.html', context)
 
-@login_required
+
 def save_student(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -474,7 +474,7 @@ def save_student(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def view_student(request, pk = None):
     context = context_data(request)
     context['page'] = 'view_student'
@@ -486,7 +486,7 @@ def view_student(request, pk = None):
     
     return render(request, 'view_student.html', context)
 
-@login_required
+
 def manage_student(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_student'
@@ -498,7 +498,7 @@ def manage_student(request, pk = None):
     context['sub_categories'] = models.SubCategory.objects.filter(delete_flag = 0, status = 1).all()
     return render(request, 'manage_student.html', context)
 
-@login_required
+
 def delete_student(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:
@@ -513,7 +513,7 @@ def delete_student(request, pk = None):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def borrows(request):
     context = context_data(request)
     context['page'] = 'borrow'
@@ -521,7 +521,7 @@ def borrows(request):
     context['borrows'] = models.Borrow.objects.order_by('status').all()
     return render(request, 'borrows.html', context)
 
-@login_required
+
 def save_borrow(request):
     resp = { 'status': 'failed', 'msg' : '' }
     if request.method == 'POST':
@@ -550,7 +550,7 @@ def save_borrow(request):
 
     return HttpResponse(json.dumps(resp), content_type="application/json")
 
-@login_required
+
 def view_borrow(request, pk = None):
     context = context_data(request)
     context['page'] = 'view_borrow'
@@ -562,7 +562,7 @@ def view_borrow(request, pk = None):
     
     return render(request, 'view_borrow.html', context)
 
-@login_required
+
 def manage_borrow(request, pk = None):
     context = context_data(request)
     context['page'] = 'manage_borrow'
@@ -575,7 +575,7 @@ def manage_borrow(request, pk = None):
     context['books'] = models.Books.objects.filter(delete_flag = 0, status = 1).all()
     return render(request, 'manage_borrow.html', context)
 
-@login_required
+
 def delete_borrow(request, pk = None):
     resp = { 'status' : 'failed', 'msg':''}
     if pk is None:

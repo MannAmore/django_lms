@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['djangolms-production.up.railway.app','mandra9.pythonanywhere.com', 'localhost', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['djangolms-production.up.railway.app']
 
 # Application definition
 
