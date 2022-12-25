@@ -46,7 +46,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         # 'DIRS': ['./lmsApp/templates/'],
-        'DIRS': ['templates'],
+        'DIRS': ['.django_lms/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
