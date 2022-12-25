@@ -90,7 +90,7 @@ DATABASES = {
         'PASSWORD': 'G3RBpnyoCHFT6jnIEjQ9',
         'HOST': 'containers-us-west-24.railway.app',
         'PORT': '6194'
-    }
+     }
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'my_app',
