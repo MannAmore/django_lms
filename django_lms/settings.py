@@ -58,7 +58,7 @@ ROOT_URLCONF = 'django_lms.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': ['lmsApp' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,6 +83,8 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+
+    # db config hosting
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'railway',
@@ -91,6 +93,8 @@ DATABASES = {
         'HOST': 'containers-us-west-24.railway.app',
         'PORT': '6194'
      }
+
+    # uncomment ini kalau mau jalankan project di lokal
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'my_app',
