@@ -1,0 +1,38 @@
+ {% load static %} {% load humanize %}
+<style>
+    #uni_modal .modal-footer {
+        display: none
+    }
+    
+    #uni_modal .modal-sub-footer {
+        display: flex
+    }
+</style>
+<div class="container-fluid" id="e-details">
+    <div class="">
+        <dl>
+            <dt>NIM</dt>
+            <dd class="ps-4">{{student.code}}</dd>
+            <dt>Fakultas</dt>
+            <dd class="ps-4">{{student.department}}</dd>
+            <dt>Jurusan</dt>
+            <dd class="ps-4">{{student.course}}</dd>
+            <dt>Nama</dt>
+            <dd class="ps-4">{{student.name}}</dd>
+            <dt>Jenis Kelamin</dt>
+            <dd class="ps-4">{{student.gender}}</dd>
+            <dt>Kontak</dt>
+            <dd class="ps-4">{{student.contact}}</dd>
+            <dt>Email</dt>
+            <dd class="ps-4">{{student.email}}</dd>
+            <dt>Alamat</dt>
+            <dd class="ps-4">{{student.address}}</dd>
+            <dt>Status</dt>
+            <dd class="ps-4">
+                {% if student.status == '1' %}
+                <span class="badge badge-success bg-gradient bg-success px-3 rounded-pill bg-opacity-75 text-sm py-1">Aktif</span> {% else %}
+                <span class="badge badge-secondary bg-gradient bg-secondary px-3 rounded-pill bg-opacity-75 text-sm py-1">Tidak Aktif</span> {% endif %}
+            </dd>
+        </dl>
+    </div>
+</div>
